@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LeadUp Style Landing Page</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+    
+    body {
+      background-color: #131418; /* Dark background */
+      color: white;
+      font-family: Inter, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Top Navigation / Logo */
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 20px; /* Align with the text content */
+    }
+
+    .logo-image {
+      width: 30px; /* Adjust based on your logo size */
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Main container for left text + right snippet */
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* Left section (headline, sub-subheader, bullets, CTA) */
+    .left-section {
+      width: 52%;
+      margin-top: 40px;
+      margin-right: -20px;
+      display: inline-block;
+    }
+    .left-section h1 {
+      color: white;
+      font-size: 34px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .sub-subheader {
+      color: white;
+      font-size: 14px;
+      font-weight: normal;
+      margin-bottom: 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .sub-subheader strong {
+      font-weight: 600;
+    }
+    .left-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    .left-section ul li {
+      margin: 8px 0;  /* Reduced from 15px to 8px */
+      color: white;
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+    }
+    .left-section ul li::before {
+      content: "✓";
+      color: #0080e6;
+      margin-right: 10px;
+      font-weight: bold;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Right snippet box (white) containing the snippet text + VSL video */
+    .snippet-box {
+      width: 42%;
+      display: inline-block;
+      vertical-align: top;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin-top: 60px;
+    }
+    .snippet-video video {
+      width: 100%;
+      border-radius: 5px;
+      display: block;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* Update header styling */
+    .header {
+      color: #0080e6;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 15px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;  /* Added font-weight to make it bold */
+    }
+
+    /* Update CTA container styling */
+    .cta-container {
+      /* Remove the old margin-left: 20px and let it stretch */
+      width: 94.5%; /* Matches combined widths of left (52%) + right (42%) */
+      margin-top: 40px;
+      clear: both;
+      padding: 0;
+      /* No extra margin-left so it starts where left text begins */
+      margin-left: 0; 
+    }
+
+    .cta-button {
+      display: block;
+      padding: 18px 36px;
+      background-color: #0080e6;
+      color: white;
+      font-size: 21px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      text-align: center;
+      width: 100%;
+      border: 4px solid #131418;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+      animation: whiteGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes whiteGlow {
+      0% {
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+      }
+      100% {
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    .cta-button:hover {
+      background-color: #0066b8;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top navigation with logo -->
+  <div class="navbar">
+    <div class="logo-container">
+      <img src="automa8-logo.jpg" alt="Automa8 AI Logo" class="logo-image">
+      <span class="logo-text">Automa8 AI</span>
+    </div>
+  </div>
+
+  <!-- Main content container -->
+  <div class="container">
+    <div class="left-section">
+      <div class="header">HELPING AGENCIES AND COACHES</div>
+      <h1>Build Personal Brands That<br> generate qualified sales calls</h1>
+      <div class="sub-subheader">USING THE <strong>BUSINESS INFLUENCER FUNNEL</strong>:</div>
+      <ul>
+        <li>Scale to $100K monthly revenue.</li>
+        <li>Book 50+ Warm Sales Calls Monthly</li>
+        <li>Build authority & visibility within your niche.</li>
+      </ul>
+    </div>
+
+    <div class="snippet-box">
+      <div class="snippet-video">
+        <video controls autoplay>
+          <source src="IMG_1514.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <div class="cta-container">
+      <a href="form.html" class="cta-button">INTERESTED? LET'S TALK!</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Copyright 2025. All rights reserved
+  </div>
+
+</body>
+</html>

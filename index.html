@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        body {
+            font-family: Inter, sans-serif;
+            text-align: center;
+            background-color: #131418;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        p {
+            font-size: 16px;
+            color: #888;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        p:last-of-type {
+            font-size: 14px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            max-width: 400px;
+            margin: auto;
+            border: 2px solid #0080e6;
+        }
+        input {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+            font-family: Inter, sans-serif;
+        }
+        button {
+            padding: 12px 20px;
+            background-color: #0080e6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: Inter, sans-serif;
+        }
+        button:hover {
+            background-color: #0066b8;
+        }
+        .hidden-id {
+            color: #000;
+            font-size: 0px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Unlock the secret to better conversions with our meeting analyzer, powered by entrepreneurial wisdom.</h2>
+        <p>When you provide your email, you'll be subscribed to our<br> newsletter. You can opt out anytime if it's not for you.</p>
+        <div class="input-container">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <button onclick="submitForm()">Get Access Now</button>
+        </div>
+    </div>
+
+    <div id="uniqueID" class="hidden-id">1111</div>
+
+    <script>
+        function submitForm() {
+            let email = document.getElementById("email").value;
+            let id = document.getElementById("uniqueID").innerText.trim();
+
+            if (email === "") {
+                alert("Please enter your email.");
+                return;
+            }
+
+            let airtableUrl = "https://api.airtable.com/v0/appDwbk7KTRmJ9nJG/tblZMrlrwI1eKCEAd";
+            let accessToken = "pat4Dddad6zhCP0nP.e0cbdbc23ce109a5d22630ed38dc7a979fc74958af95912eeb6df06d6bf81841";
+
+            let data = {
+                "records": [
+                    {
+                        "fields": {
+                            "Email id": email,
+                            "ID": id
+                        }
+                    }
+                ]
+            };
+
+            fetch(airtableUrl, {
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer " + accessToken,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                window.location.href = "vsl.html"
+                document.getElementById("email").value = "";
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Something went wrong. Please try again.");
+            });
+        }
+    </script>
+
+</body>
+</html>

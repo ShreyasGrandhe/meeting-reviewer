@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book In A Demo - Automa8 AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #131418;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px;
+            padding-top: 120px;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 60px;
+            position: relative;
+        }
+
+        .left-section {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .header-text {
+            color: #0080e6;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .main-heading {
+            font-size: 72px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .description {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 16px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .logo-section {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            z-index: 1;
+        }
+
+        .logo-image {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #131418;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            background: #fff;
+            box-shadow: 0 0 0 2px #0080e6;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background-color: #0080e6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 24px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0066b8;
+        }
+
+        .consent-text {
+            font-size: 10px;
+            color:#131418;
+            margin-top: 16px;
+            line-height: 1.4;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+                padding: 40px 20px;
+                text-align: center;
+            }
+
+            .left-section {
+                max-width: 100%;
+            }
+
+            .main-heading {
+                font-size: 48px;
+            }
+
+            .form-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="main-container">
+        <div class="logo-section">
+            <img src="automa8-logo.jpg" alt="Automa8 AI Logo" class="logo-image">
+            <span class="logo-text">Automa8 AI</span>
+        </div>
+
+        <div class="left-section">
+            <div class="header-text">HELPING AGENCIES AND COACHES GROW:</div>
+            <h1 class="main-heading">Book In A Demo</h1>
+            <p class="description">Complete this form to guarantee your Demo Call slot.</p>
+            <p class="description">Once done, you’ll head over to Calendly to wrap up the details and select a time that works for you!</p>
+        </div>
+
+        <div class="form-container">
+            <form id="demo-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input 
+                        type="text" 
+                        id="fullName" 
+                        name="fullName" 
+                        required 
+                        placeholder="Full Name"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        placeholder="What's your email address?"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone *</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        required 
+                        placeholder="Phone"
+                    >
+                </div>
+
+                <button type="submit" class="submit-btn">Book a Demo</button>
+
+                <p class="consent-text">
+                    By providing my email address and phone number, I consent to receive emails and text messages—including newsletters and marketing communications—from Automa8 AI and agree to the Terms and Privacy Policy. You may unsubscribe at any time.
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            console.log('Form submitted:', data);
+            alert('Thank you! We will contact you shortly.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

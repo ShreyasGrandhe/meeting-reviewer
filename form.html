@@ -155,11 +155,13 @@
             font-family: 'Roboto', sans-serif;
         }
 
+        /* RESPONSIVE STYLES */
         @media (max-width: 1024px) {
             .main-container {
                 flex-direction: column;
                 padding: 40px 20px;
                 text-align: center;
+                gap: 40px;
             }
 
             .left-section {
@@ -170,8 +172,74 @@
                 font-size: 48px;
             }
 
+            .description {
+                font-size: 16px;
+            }
+
             .form-container {
+                max-width: 90%;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .main-heading {
+                font-size: 36px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .form-container {
+                padding: 20px;
                 max-width: 100%;
+            }
+
+            .submit-btn {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .logo-section {
+                top: 20px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 28px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            .submit-btn {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .logo-image {
+                width: 30px;
+                height: 30px;
+            }
+
+            .logo-text {
+                font-size: 18px;
             }
         }
     </style>
@@ -194,35 +262,17 @@
             <form id="demo-form" onsubmit="handleSubmit(event)">
                 <div class="form-group">
                     <label for="fullName">Full Name *</label>
-                    <input 
-                        type="text" 
-                        id="fullName" 
-                        name="fullName" 
-                        required 
-                        placeholder="Full Name"
-                    >
+                    <input type="text" id="fullName" name="fullName" required placeholder="Full Name">
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email *</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        required 
-                        placeholder="What's your email address?"
-                    >
+                    <input type="email" id="email" name="email" required placeholder="What's your email address?">
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Phone *</label>
-                    <input 
-                        type="tel" 
-                        id="phone" 
-                        name="phone" 
-                        required 
-                        placeholder="Phone"
-                    >
+                    <input type="tel" id="phone" name="phone" required placeholder="Phone">
                 </div>
 
                 <button type="submit" class="submit-btn">Book a Demo</button>
@@ -237,9 +287,6 @@
     <script>
         function handleSubmit(event) {
             event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            console.log('Form submitted:', data);
             alert('Thank you! We will contact you shortly.');
             event.target.reset();
         }

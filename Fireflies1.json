@@ -1,0 +1,234 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.fireflies.ai/graphql",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eabbe896-771e-4553-94bf-ee4590f0e95e"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": \"query Transcript($transcriptId: String!) { transcript(id: $transcriptId) { id title sentences { text start_time end_time } } }\",\n  \"variables\": {\n    \"transcriptId\": \"{{ $json['Transcript ID'] }}\"\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "2d999cb3-f5c8-4012-beae-97ce9ac060a0",
+      "name": "Get transcripts"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6a8b9e78-0dbc-400f-8a64-01569e0cd699",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "71c6e8c7-0a82-4183-bc00-b8757f032ab5",
+      "name": "Get transcription id",
+      "webhookId": "6a8b9e78-0dbc-400f-8a64-01569e0cd699"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $json.Transcript }}"
+            },
+            {
+              "content": "=You are an expert text analyzer trained on businesess lessons from top entreprenuers and businesessman. \nLessons from them:\n1.\nThey emphasize creating an irresistible offer by combining:\n\nA High-Value Promise – Clearly define the big result the customer will achieve.\nA Unique Mechanism – Show how your solution is different and better.\nA Strong Guarantee – Reduce risk for the buyer (e.g., money-back or performance-based guarantees).\nA Reason to Act Now – Add urgency and scarcity to push the buyer to take action.\n2. The $100M Sales Process\nHormozi teaches a structured sales approach based on trust, problem-solving, and closing deals efficiently:\n\nLead Qualification – Focus only on buyers who are a good fit.\nProblem Discovery – Ask deep questions to uncover the real pain points.\nSolution Framing – Position your product/service as the perfect solution.\nObjection Handling – Overcome doubts with logical reasoning and social proof.\nClosing the Deal – Get commitment by making it a no-brainer.\n3. Objection Handling Techniques\nTop businessesman teaches sellers to reframe objections instead of fighting them. For example:\n\n\"I need to think about it\" → \"What exactly do you need to think about?\" (Identify hidden concerns)\n\"It's too expensive\" → \"Compared to what?\" (Show value vs. cost)\n\"I don’t have time\" → \"How much longer do you want to struggle with this problem?\" (Highlight urgency)\n4. Price Anchoring & Perceived Value\nInstead of lowering prices, they suggests increasing perceived value by:\n\nBundling additional services (bonuses, extra support)\nShowing potential ROI (how much money or time the customer will save)\nUsing comparisons (e.g., \"This costs less than hiring a full-time employee.\")\n5. Selling Without Being Pushy\nThey emphasizes consultative selling, where you position yourself as a guide rather than a salesperson. They recommend:\n\nAsking more than telling\nMaking the customer feel understood\nDemonstrating expertise through stories and case studies\n\nBased on the transcripts provided , see if the sales person followed their's principles and methods. And also mention where we went wrong and what better he could've done.\nFirst format it this way:\nWhich part he went wrong : How can he improve in that part.\n\nNote: Instead of saying sales guy could have improved , say you could've improved in this part.\nUse emojis or number the corrections.\n\nSales Principles and Methods:\n1️⃣ Crafting an Irresistible Offer\nA strong offer combines multiple key elements:\n\nA High-Value Promise – Clearly define the big result the customer will achieve.\nA Unique Mechanism – Show how your solution is different and better than alternatives.\nA Strong Guarantee – Reduce buyer risk (e.g., money-back or performance-based guarantees).\nA Reason to Act Now – Use urgency and scarcity to drive immediate action.\n2️⃣ Structured Sales Process\nA sales conversation should be structured to build trust, uncover needs, and close efficiently:\n\nLead Qualification – Ensure you’re speaking to the right potential buyers.\nProblem Discovery – Ask deep, strategic questions to reveal real pain points.\nSolution Framing – Position the product/service as the perfect solution.\nObjection Handling – Address doubts with logic, credibility, and social proof.\nClosing the Deal – Remove friction and make it a no-brainer for the buyer.\n3️⃣ Objection Handling Techniques\nInstead of resisting objections, reframe them to align with the buyer’s needs:\n\n“I need to think about it.” → “What exactly do you need to think about?” (Identify hidden concerns)\n“It’s too expensive.” → “Compared to what?” (Show value vs. cost)\n“I don’t have time.” → “How much longer do you want to struggle with this problem?” (Highlight urgency)\n4️⃣ Price Anchoring & Perceived Value\nRather than lowering price, focus on making the offer feel more valuable:\n\nBundle additional services (e.g., bonuses, extra support).\nShow the ROI (how much time or money the customer will save).\nUse comparisons (e.g., “This costs less than hiring a full-time employee.”).\n5️⃣ Selling Without Being Pushy\nEffective selling is about guiding, not pressuring:\n\nAsk more, tell less – Let the customer articulate their own needs.\nMake them feel understood – Listen actively and validate their concerns.\nDemonstrate expertise – Use case studies, success stories, and data to build trust.\n\nDon't use any * symbol and dont give in markdown format.",
+              "role": "system"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        640,
+        0
+      ],
+      "id": "3a610712-7cd2-481f-acec-c05d4bd8fb2d",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "dXEnwBhgDhfyWDfo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d4df1a62-c5fc-4497-a08e-82703aa53dae",
+              "name": "Transcript",
+              "value": "={{$json.data.transcript.sentences.map(s => s.text).join(\", \")}}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        440,
+        0
+      ],
+      "id": "d208ff8d-5c66-46f4-a843-4a02aa6b9562",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "11bmKzb8BJq59z_j_RALmYJfwGgoJ8DAIAEEp8jsyPY0",
+          "mode": "list",
+          "cachedResultName": "Corrections",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11bmKzb8BJq59z_j_RALmYJfwGgoJ8DAIAEEp8jsyPY0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11bmKzb8BJq59z_j_RALmYJfwGgoJ8DAIAEEp8jsyPY0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{$now}}",
+            "Improvisations": "={{ $json.message.content }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Improvisations",
+              "displayName": "Improvisations",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1000,
+        0
+      ],
+      "id": "189248ac-4906-4bf7-9174-f4978ca6db62",
+      "name": "Google Sheets"
+    }
+  ],
+  "pinData": {
+    "Get transcription id": [
+      {
+        "json": {
+          "Transcript ID": "01JNDEPXBAJZ7M4SR92GQFANMT"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Get transcription id": {
+      "main": [
+        [
+          {
+            "node": "Get transcripts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get transcripts": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e07534dd-cc0e-4e42-b048-52edd3b044d3",
+  "meta": {
+    "instanceId": "5828bcbfa25e2b8dd19e8d983150f7097c37bdd49280a712ea834f232c86a250"
+  },
+  "id": "kG1410whqHtYZQFB",
+  "tags": []
+}
